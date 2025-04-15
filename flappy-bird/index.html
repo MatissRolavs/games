@@ -1,12 +1,12 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
     <title>Flappy Bird</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class="bg-gray-100">
-
+    <link rel="stylesheet" href="public/style.css">
+</head>
+<body class="bg-gray-100">
     <!-- Navbar -->
     <nav class="flex justify-between items-center p-4 bg-blue-600 text-white">
         <span class="font-bold text-lg">🐦 Flappy Bird</span>
@@ -18,11 +18,11 @@
         <h1 class="text-4xl font-bold mb-4">Flappy Bird Game</h1>
         <input id="player-name" class="p-2 border border-gray-300 rounded mb-4" placeholder="Enter your name" />
         <select id="bird-select" class="p-2 mb-4">
-        <option value="bird1.jpg">Bird 1</option>
-        <option value="bird2.jpg">Bird 2</option>
-        <option value="bird3.jpg">Bird 3</option>
+            <option value="bird1.jpg">Bird 1</option>
+            <option value="bird2.jpg">Bird 2</option>
+            <option value="bird3.jpg">Bird 3</option>
         </select>
-        <button onclick="startGame()" class="bg-green-500 text-white p-2 rounded hover:bg-green-400">Start Game</button>
+        <button id="start-btn" class="bg-green-500 text-white p-2 rounded hover:bg-green-400">Start Game</button>
     </div>
 
     <!-- Game Screen -->
@@ -33,9 +33,30 @@
     <!-- Game Over Screen -->
     <div id="game-over" class="flex justify-center items-center flex-col mt-16 hidden">
         <h2 id="final-score" class="text-3xl font-semibold mb-4"></h2>
-        <button onclick="restartGame()" class="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-400">Restart Game</button>
+        <div>
+            <button id="save-btn" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-400 mr-2">Save Score</button>
+            <button id="restart-btn" class="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-400">Play Again</button>
+        </div>
     </div>
 
     <script src="public/game.js"></script>
-    </body>
-    </html>
+    <script>
+        // Add these event listeners in the HTML file
+        document.getElementById('save-btn').addEventListener('click', function() {
+            if (typeof saveScore === 'function') {
+                saveScore();
+            } else {
+                console.error('saveScore function not found');
+            }
+        });
+
+        document.getElementById('restart-btn').addEventListener('click', function() {
+            if (typeof restartGame === 'function') {
+                restartGame();
+            } else {
+                console.error('restartGame function not found');
+            }
+        });
+    </script>
+</body>
+</html>

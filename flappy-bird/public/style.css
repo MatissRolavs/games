@@ -1,34 +1,125 @@
-/* Basic reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Center the body using flex */
 body {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #a8dadc, #457b9d);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
 }
 
-/* Center the game container */
-#game-container {
-  position: relative;
-  width: 500px;
-  height: 500px;
+nav {
+  width: 100%;
+  padding: 12px;
+  background: #1d3557;
+  color: white;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: #e0e0e0;
-  border-radius: 10px;
-  overflow: hidden;
+  max-width: 900px;
 }
 
-/* Center the game-over screen */
-#game-over {
-  display: none;
+nav a {
+  text-decoration: none;
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ffd700;
+}
+
+#start-screen,
+#game-container,
+#game-over,
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+#start-btn, #restart-btn {
+  background: #28a745;
+  color: white;
+  width: 100%;
+}
+
+#start-btn:hover, #restart-btn:hover {
+  background: #218838;
+}
+
+#save-btn {
+  background: #007bff;
+  color: white;
+  width: 100%;
+}
+
+#save-btn:hover {
+  background: #0056b3;
+}
+
+canvas {
+  background: linear-gradient(180deg, #87CEEB, #4c94d6);
+  display: block;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.leaderboard {
+  max-width: 600px;
+}
+
+.score-entry {
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  margin: 8px 0;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.score-entry:hover {
+  background: #e9ecef;
+  transform: translateY(-3px);
+}
+
+.top-three {
+  background: linear-gradient(135deg, #ffeb3b, #fdd835);
+  font-weight: bold;
+}
+
+.top-three:hover {
+  background: linear-gradient(135deg, #ffc107, #ffb300);
+}
+
+@media (max-width: 640px) {
+  #game-container, .leaderboard {
+    width: 95%;
+  }
 }

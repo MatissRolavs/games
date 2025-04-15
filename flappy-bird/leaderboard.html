@@ -1,59 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leaderboard</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
-    }
-    .leaderboard {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-    }
-    .leaderboard div {
-      margin: 10px;
-      font-size: 24px;
-    }
-    .podium {
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="public/style.css">
 </head>
-<body>
-  <h1>Leaderboard</h1>
-  <div class="leaderboard">
-    <div id="player1" class="podium">Loading...</div>
-    <div id="player2" class="podium">Loading...</div>
-    <div id="player3" class="podium">Loading...</div>
-  </div>
+<body class="bg-gray-100">
+    <nav class="flex justify-between items-center p-4 bg-blue-600 text-white">
+        <span class="font-bold text-lg">🐦 Flappy Bird</span>
+        <a href="index.html" class="hover:text-yellow-300">🔙 Back to Game</a>
+    </nav>
 
-  <script>
-    // Fetch leaderboard data from backend (localhost:3000 is the server address)
-    fetch("http://localhost:3000/leaderboard")
-      .then(response => response.json())
-      .then(players => {
-        if (players.length === 0) {
-          document.getElementById("player1").innerText = "No players yet!";
-          document.getElementById("player2").innerText = "";
-          document.getElementById("player3").innerText = "";
-        } else {
-          // Set top 3 players
-          document.getElementById("player1").innerText = `1. ${players[0].name} - Score: ${players[0].score}`;
-          document.getElementById("player2").innerText = `2. ${players[1] ? players[1].name : "No Player"} - Score: ${players[1] ? players[1].score : 0}`;
-          document.getElementById("player3").innerText = `3. ${players[2] ? players[2].name : "No Player"} - Score: ${players[2] ? players[2].score : 0}`;
-        }
-      })
-      .catch(error => {
-        console.error("Error fetching leaderboard data:", error);
-      });
-  </script>
+    <div class="container mx-auto mt-8">
+        <h1 class="text-4xl font-bold mb-8 text-center">Leaderboard</h1>
+        <div class="leaderboard bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
+            <h2 class="text-2xl font-semibold mb-4">Top Scores</h2>
+            <div id="scores-container"></div>
+        </div>
+    </div>
+
+    <script src="public/leaderboard.js"></script>
 </body>
 </html>
-    
