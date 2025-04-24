@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Game</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="game-container">
+    <div class="timeAndInputContainer">
+      <p id="timerDisplay">00:00:00</p>
+      <div id="prompt-container">
+        <div class="difficulty-container">
+          <label>
+            Easy:
+            <input type="radio" id="easy" name="difficulty" value="Easy">
+          </label>
+          <label>
+            Normal:
+            <input type="radio" id="normal" name="difficulty" value="Normal">
+          </label>
+          <label>
+            Hard:
+            <input type="radio" id="hard" name="difficulty" value="Hard">
+          </label>
+          <label>
+            Ultra:
+            <input type="radio" id="ultra" name="difficulty" value="Ultra">
+          </label>
+        </div>
+        <p id="prompt-text"></p>
+        <div class="new-prompt-container">
+          <button id="start-button">New Prompt</button>
+        </div>
+      </div>
+      
+      <div class="username-container" style="margin: 10px 0; text-align: center;">
+        <label for="username">Username: </label>
+        <input type="text" id="username" placeholder="Enter your username" />
+      </div>
+      
+      <input type="text" id="text-input" placeholder="Type here..." />
+    </div>
+    <p style="text-align:center"><a href="leaderboard.html">View Leaderboard</a></p>
+  </div>
+</body>
+</html>

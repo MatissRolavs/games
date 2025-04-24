@@ -1,0 +1,9 @@
+CREATE DATABASE typing_game;
+
+CREATE TABLE leaderboard (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    difficulty VARCHAR(20) NOT NULL,
+    time INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
