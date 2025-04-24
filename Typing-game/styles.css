@@ -1,120 +1,241 @@
 * {
-    font-family: monospace;
-    font-size: 1.03em;
+  font-family: monospace;
+  font-size: 1.03em;
 }
 
 body {
-    margin: 0;
-    background-color: rgb(218, 196, 152);
+  margin: 0;
+  background-color: rgb(218, 196, 152);
 }
 
 .game-container {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
+/* Existing styles for header, prompt container, etc. */
 header {
-    width: 100%;
-    height: 8vh;
-    font-weight: 700;
-    text-align: center;
+  width: 100%;
+  height: 8vh;
+  font-weight: 700;
+  text-align: center;
 }
 
 #color {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 #prompt-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 .difficulty-container, .new-prompt-container {
-    position: absolute;
-    width: 15%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  position: absolute;
+  width: 15%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .difficulty-container {
-    left: 0;
-    top: 0;
+  left: 0;
+  top: 0;
 }
 
 input[type="radio"] {
-    transform: scale(1.5);
-    margin: 10px;
+  transform: scale(1.5);
+  margin: 10px;
 }
 
 .new-prompt-container {
-    right: 0;
-    top: 0;
+  right: 0;
+  top: 0;
 }
 
 .new-prompt-container > button {
-    font-size: 1.1em;
-    padding: 6px 12px;
-    background-color: yellow;
-    border: 1px solid black;    
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
+  font-size: 1.1em;
+  padding: 6px 12px;
+  background-color: yellow;
+  border: 1px solid black;    
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 .new-prompt-container > button:hover {
-    background-color: rgb(255, 213, 0);
+  background-color: rgb(255, 213, 0);
 }
 
 #prompt-container > p {
-    width: 70%;
-    font-size: 1.2em;
-    text-align: center;
-    border: 1px solid black;
-    border-radius: 12px;
-    margin: 0;
+  width: 70%;
+  font-size: 1.2em;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 12px;
+  margin: 0;
 }
 
 #prompt-text, #timerDisplay {
-    background-color: rgba(255, 255, 255, 0.322);
+  background-color: rgba(255, 255, 255, 0.322);
 }
 
 .timeAndInputContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 1.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.3em;
 }
 
 #timerDisplay {
-    border-top-right-radius: 12px;
-    border-top-left-radius: 12px;
-    border: 1px solid black;
-    border-bottom: none;
-    margin: 0;
-    padding: 10px 30px;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+  border: 1px solid black;
+  border-bottom: none;
+  margin: 0;
+  padding: 10px 30px;
 }
 
 #text-input {
-    width: 60%;
-    height: 50px;
-    font-size: 1.3em;
-
-    border-bottom-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    border: 1px solid black;
-    border-top: none;
+  width: 60%;
+  height: 50px;
+  font-size: 1.3em;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border: 1px solid black;
+  border-top: none;
 }
 
 #text-input:focus {
-    outline: none;
-    border: 1px solid black;
-    box-shadow: none;
+  outline: none;
+  border: 1px solid black;
+  box-shadow: none;
+}
+
+#leaderboard-container {
+  margin: 30px auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 800px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+#leaderboard-container h2 {
+  margin: 0 0 20px;
+  font-size: 1.8em;
+  color: #333;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.difficulty-selection {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.difficulty-selection label {
+  font-size: 1em;
+  color: #333;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+#difficulty-select {
+  font-size: 1em;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#leaderboard-table thead {
+  background-color: #f0f0f0;
+}
+
+#leaderboard-table th,
+#leaderboard-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-weight: normal;
+  color: #444;
+}
+
+
+
+
+#leaderboard-table tbody tr:first-child {
+  background-color: gold;
+  color: black;
+}
+
+
+#leaderboard-table tbody tr:nth-child(2) {
+  background-color: silver;
+  color: black;
+}
+
+
+#leaderboard-table tbody tr:nth-child(3) {
+  background-color: #cd7f32;
+  color: white;
+}
+
+
+#leaderboard-table tbody tr:nth-child(n+4) {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: black;
+}
+
+
+#leaderboard-table tbody tr:hover {
+  background-color: rgba(200, 200, 200, 0.4);
+}
+
+
+
+@media screen and (max-width: 600px) {
+  #leaderboard-table thead {
+    display: none;
+  }
+
+  #leaderboard-table tr {
+    margin-bottom: 10px;
+    display: block;
+    border: 1px solid #ddd;
+  }
+
+  #leaderboard-table td {
+    display: block;
+    text-align: right;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+  }
+
+  #leaderboard-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 50%;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+  }
 }

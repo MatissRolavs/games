@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="public/style.css">
 </head>
 <body class="bg-gray-100">
-    <!-- Navbar -->
+
     <nav class="flex justify-between items-center p-4 bg-blue-600 text-white">
         <span class="font-bold text-lg">🐦 Flappy Bird</span>
         <a href="leaderboard.html" class="hover:text-yellow-300">🏆 Leaderboard</a>
     </nav>
 
-    <!-- Start Screen -->
+
     <div id="start-screen" class="flex justify-center items-center flex-col mt-16">
         <h1 class="text-4xl font-bold mb-4">Flappy Bird Game</h1>
         <input id="player-name" class="p-2 border border-gray-300 rounded mb-4" placeholder="Enter your name" />
@@ -25,12 +25,12 @@
         <button id="start-btn" class="bg-green-500 text-white p-2 rounded hover:bg-green-400">Start Game</button>
     </div>
 
-    <!-- Game Screen -->
+
     <div id="game-container" class="flex justify-center items-center mt-8 hidden">
         <canvas id="gameCanvas" width="600" height="500" class="border border-gray-800"></canvas>
     </div>
 
-    <!-- Game Over Screen -->
+
     <div id="game-over" class="flex justify-center items-center flex-col mt-16 hidden">
         <h2 id="final-score" class="text-3xl font-semibold mb-4"></h2>
         <div>
@@ -41,7 +41,7 @@
 
     <script src="public/game.js"></script>
     <script>
-        // Add these event listeners in the HTML file
+
         document.getElementById('save-btn').addEventListener('click', function() {
             if (typeof saveScore === 'function') {
                 saveScore();
