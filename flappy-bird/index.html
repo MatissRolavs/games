@@ -1,62 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <title>Flappy Bird</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="public/style.css">
-</head>
-<body class="bg-gray-100">
+    <style>
+      /* General styles */
+      body {
+        background-color: #f3f4f6; /* Tailwind's bg-gray-100 */
+
+        min-height: 100vh; /* Ensure full-height centering */
+        margin: 0;
+      }
+
+      /* Navbar styles */
+      nav {
+        width: 100%;
+        padding: 1rem; /* Tailwind's p-4 */
+        background-color: #2563eb; /* Tailwind's bg-blue-600 */
+        color: white; /* Tailwind's text-white */
+        display: flex;
+        justify-content: space-between;
+      }
+
+      nav span {
+        font-weight: bold;
+        font-size: 1.125rem; /* Tailwind's text-lg */
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        margin: 5px;
+      }
+
+      nav a:hover {
+        color: #fbbf24; /* Tailwind's hover:text-yellow-300 */
+      }
+
+      /* Center #game-app */
+      #game-app {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; /* Align children vertically */
+        width: 100%;
+      }
+
+      /* Start Screen styles */
+      #start-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 4rem; /* Tailwind's mt-16 */
+      }
+
+      h1 {
+        font-size: 2.25rem; /* Tailwind's text-4xl */
+        font-weight: bold;
+        margin-bottom: 1rem; /* Tailwind's mb-4 */
+      }
+
+      input#player-name {
+        padding: 0.5rem; /* Tailwind's p-2 */
+        border: 1px solid #d1d5db; /* Tailwind's border-gray-300 */
+        border-radius: 0.25rem; /* Tailwind's rounded */
+        margin-bottom: 1rem; /* Tailwind's mb-4 */
+      }
+
+      select#bird-select {
+        padding: 0.5rem; /* Tailwind's p-2 */
+        margin-bottom: 1rem; /* Tailwind's mb-4 */
+      }
+
+      button#start-btn {
+        background-color: #10b981; /* Tailwind's bg-green-500 */
+        color: white; /* Tailwind's text-white */
+        padding: 0.5rem; /* Tailwind's p-2 */
+        border-radius: 0.25rem; /* Tailwind's rounded */
+        transition: background-color 0.3s ease;
+      }
+
+      button#start-btn:hover {
+        background-color: #34d399; /* Tailwind's hover:bg-green-400 */
+      }
+
+      /* Game Screen styles */
+      #game-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem; /* Tailwind's mt-8 */
+        display: none; /* Tailwind's hidden */
+      }
+
+      canvas#gameCanvas {
+        border: 1px solid #1f2937; /* Tailwind's border-gray-800 */
+      }
+
+      /* Game Over Screen styles */
+      #game-over {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 4rem; /* Tailwind's mt-16 */
+        display: none; /* Tailwind's hidden */
+      }
+
+      h2#final-score {
+        font-size: 1.875rem; /* Tailwind's text-3xl */
+        font-weight: 600; /* Tailwind's font-semibold */
+        margin-bottom: 1rem; /* Tailwind's mb-4 */
+      }
+
+      button#save-btn,
+      button#restart-btn {
+        padding: 0.5rem; /* Tailwind's p-2 */
+        border-radius: 0.25rem; /* Tailwind's rounded */
+        transition: background-color 0.3s ease;
+      }
+
+      button#save-btn {
+        background-color: #2563eb; /* Tailwind's bg-blue-500 */
+        color: white; /* Tailwind's text-white */
+        margin-right: 0.5rem; /* Tailwind's mr-2 */
+      }
+
+      button#save-btn:hover {
+        background-color: #3b82f6; /* Tailwind's hover:bg-blue-400 */
+      }
+
+      button#restart-btn {
+        background-color: #fbbf24; /* Tailwind's bg-yellow-500 */
+        color: white; /* Tailwind's text-white */
+      }
+
+      button#restart-btn:hover {
+        background-color: #fcd34d; /* Tailwind's hover:bg-yellow-400 */
+      }
+    </style>
+  </head>
+  <body>
     <!-- Navbar -->
-    <nav class="flex justify-between items-center p-4 bg-blue-600 text-white">
-        <span class="font-bold text-lg">🐦 Flappy Bird</span>
-        <a href="leaderboard.html" class="hover:text-yellow-300">🏆 Leaderboard</a>
+    <nav>
+      <span>🐦 Flappy Bird</span>
+      <a href="leaderboard.html">🏆 Leaderboard</a>
     </nav>
-
-    <!-- Start Screen -->
-    <div id="start-screen" class="flex justify-center items-center flex-col mt-16">
-        <h1 class="text-4xl font-bold mb-4">Flappy Bird Game</h1>
-        <input id="player-name" class="p-2 border border-gray-300 rounded mb-4" placeholder="Enter your name" />
-        <select id="bird-select" class="p-2 mb-4">
-            <option value="bird1.jpg">Bird 1</option>
-            <option value="bird2.jpg">Bird 2</option>
-            <option value="bird3.jpg">Bird 3</option>
+    <div id="game-app">
+      <!-- Start Screen -->
+      <div id="start-screen">
+        <h1>Flappy Bird Game</h1>
+        <input id="player-name" placeholder="Enter your name" />
+        <select id="bird-select">
+          <option value="bird1.jpg">Bird 1</option>
+          <option value="bird2.jpg">Bird 2</option>
+          <option value="bird3.jpg">Bird 3</option>
+          <option value="Super_Fat_Bird.webp">Bird 4</option>
         </select>
-        <button id="start-btn" class="bg-green-500 text-white p-2 rounded hover:bg-green-400">Start Game</button>
-    </div>
+        <button id="start-btn">Start Game</button>
+      </div>
 
-    <!-- Game Screen -->
-    <div id="game-container" class="flex justify-center items-center mt-8 hidden">
-        <canvas id="gameCanvas" width="600" height="500" class="border border-gray-800"></canvas>
-    </div>
+      <!-- Game Screen -->
+      <div id="game-container">
+        <canvas id="gameCanvas" width="600" height="500"></canvas>
+      </div>
 
-    <!-- Game Over Screen -->
-    <div id="game-over" class="flex justify-center items-center flex-col mt-16 hidden">
-        <h2 id="final-score" class="text-3xl font-semibold mb-4"></h2>
+      <!-- Game Over Screen -->
+      <div id="game-over">
+        <h2 id="final-score"></h2>
         <div>
-            <button id="save-btn" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-400 mr-2">Save Score</button>
-            <button id="restart-btn" class="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-400">Play Again</button>
+          <button id="save-btn">Save Score</button>
+          <button id="restart-btn">Play Again</button>
         </div>
+      </div>
     </div>
-
     <script src="public/game.js"></script>
     <script>
-        // Add these event listeners in the HTML file
-        document.getElementById('save-btn').addEventListener('click', function() {
-            if (typeof saveScore === 'function') {
-                saveScore();
-            } else {
-                console.error('saveScore function not found');
-            }
+      // Add these event listeners in the HTML file
+      document
+        .getElementById("save-btn")
+        .addEventListener("click", function () {
+          if (typeof saveScore === "function") {
+            saveScore();
+          } else {
+            console.error("saveScore function not found");
+          }
         });
-
-        document.getElementById('restart-btn').addEventListener('click', function() {
-            if (typeof restartGame === 'function') {
-                restartGame();
-            } else {
-                console.error('restartGame function not found');
-            }
+      document
+        .getElementById("restart-btn")
+        .addEventListener("click", function () {
+          if (typeof restartGame === "function") {
+            restartGame();
+          } else {
+            console.error("restartGame function not found");
+          }
         });
     </script>
-</body>
+  </body>
 </html>

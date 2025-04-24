@@ -1,25 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leaderboard</title>
-    <link rel="stylesheet" href="public/style.css">
-</head>
-<body class="bg-gray-100">
-    <nav class="flex justify-between items-center p-4 bg-blue-600 text-white">
-        <span class="font-bold text-lg">🐦 Flappy Bird</span>
-        <a href="index.html" class="hover:text-yellow-300">🔙 Back to Game</a>
+    <style>
+      /* General styles */
+      body {
+        background-color: #f3f4f6; /* Tailwind's bg-gray-100 */
+      }
+
+      /* Navigation bar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem; /* 4 Tailwind units */
+        background-color: #2563eb; /* Tailwind's bg-blue-600 */
+        color: white; /* Tailwind's text-white */
+      }
+
+      nav span {
+        font-weight: bold;
+        font-size: 1.125rem; /* Tailwind's text-lg */
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #fbbf24; /* Tailwind's hover:text-yellow-300 */
+      }
+
+      /* Container */
+      .container {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2rem; /* Tailwind's mt-8 */
+        max-width: 100%; /* Tailwind's mx-auto */
+      }
+
+      /* Headings */
+      h1 {
+        font-size: 2.25rem; /* Tailwind's text-4xl */
+        font-weight: bold;
+        margin-bottom: 2rem; /* Tailwind's mb-8 */
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 1.5rem; /* Tailwind's text-2xl */
+        font-weight: 600; /* Tailwind's font-semibold */
+        margin-bottom: 1rem; /* Tailwind's mb-4 */
+      }
+
+      /* Leaderboard box */
+      .leaderboard {
+        background-color: white; /* Tailwind's bg-white */
+        padding: 1.5rem; /* Tailwind's p-6 */
+        border-radius: 0.5rem; /* Tailwind's rounded-lg */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-md */
+        max-width: 28rem; /* Tailwind's max-w-md */
+        margin-left: auto;
+        margin-right: auto; /* Centering: Tailwind's mx-auto */
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <span>🐦 Flappy Bird</span>
+      <a href="index.html">🔙 Back to Game</a>
     </nav>
 
-    <div class="container mx-auto mt-8">
-        <h1 class="text-4xl font-bold mb-8 text-center">Leaderboard</h1>
-        <div class="leaderboard bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
-            <h2 class="text-2xl font-semibold mb-4">Top Scores</h2>
-            <div id="scores-container"></div>
-        </div>
+    <div class="container">
+      <h1>Leaderboard</h1>
+      <div class="leaderboard">
+        <h2>Top Scores</h2>
+        <div id="scores-container"></div>
+      </div>
     </div>
 
     <script src="public/leaderboard.js"></script>
-</body>
+  </body>
 </html>

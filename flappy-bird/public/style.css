@@ -11,7 +11,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   background: linear-gradient(135deg, #a8dadc, #457b9d);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #333;
 }
 
@@ -63,13 +63,15 @@ button {
   transition: all 0.3s ease-in-out;
 }
 
-#start-btn, #restart-btn {
+#start-btn,
+#restart-btn {
   background: #28a745;
   color: white;
   width: 100%;
 }
 
-#start-btn:hover, #restart-btn:hover {
+#start-btn:hover,
+#restart-btn:hover {
   background: #218838;
 }
 
@@ -84,7 +86,7 @@ button {
 }
 
 canvas {
-  background: linear-gradient(180deg, #87CEEB, #4c94d6);
+  background: linear-gradient(180deg, #87ceeb, #4c94d6);
   display: block;
   border-radius: 8px;
   width: 100%;
@@ -97,6 +99,7 @@ canvas {
 .score-entry {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 14px;
   margin: 8px 0;
   background: #f8f9fa;
@@ -119,7 +122,8 @@ canvas {
 }
 
 @media (max-width: 640px) {
-  #game-container, .leaderboard {
+  #game-container,
+  .leaderboard {
     width: 95%;
   }
 }

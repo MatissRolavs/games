@@ -18,10 +18,14 @@ $result = $conn->query($sql);
 
 $scores = [];
 while ($row = $result->fetch_assoc()) {
-    $scores[] = $row;
+    $scores[] = [
+        "name" => $row["name"],
+        "score" => $row["score"],
+    ];
 }
 
 echo json_encode($scores);
 
 $conn->close();
 ?>
+

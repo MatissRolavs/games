@@ -1,0 +1,60 @@
+Raw Input: {"name":"sdsaxa","score":1}
+Received Data: {"name":"sdsaxa","score":1}
+Sanitized Data - Name: sdsaxa, Score: 1
+Score saved successfully!
+Raw Input: {"name":"dada","score":2}
+Received Data: {"name":"dada","score":2}
+Sanitized Data - Name: dada, Score: 2
+Score saved successfully!
+Raw Input: {"name":"dwd","score":5}
+Received Data: {"name":"dwd","score":5}
+Sanitized Data - Name: dwd, Score: 5
+Score saved successfully!
+Raw Input: {"name":"dwd","score":1}
+Received Data: {"name":"dwd","score":1}
+Sanitized Data - Name: dwd, Score: 1
+Score saved successfully!
+Raw Input: {"name":"jkj","score":21}
+Received Data: {"name":"jkj","score":21}
+Sanitized Data - Name: jkj, Score: 21
+Score saved successfully!
+Raw Input: {"name":"123","score":2}
+Received Data: {"name":"123","score":2}
+Sanitized Data - Name: 123, Score: 2
+Score saved successfully!
+Raw Input: {"name":"JNJ","score":3}
+Received Data: {"name":"JNJ","score":3}
+Sanitized Data - Name: JNJ, Score: 3
+Score saved successfully!
+Raw Input: {"name":"vasilija masaautisms","score":11}
+Received Data: {"name":"vasilija masaautisms","score":11}
+Sanitized Data - Name: vasilija masaautisms, Score: 11
+Score saved successfully!
+Raw Input: {"name":"pidor","score":2}
+Received Data: {"name":"pidor","score":2}
+Sanitized Data - Name: pidor, Score: 2
+Score saved successfully!
+Raw Input: {"name":"sdasda","score":3}
+Received Data: {"name":"sdasda","score":3}
+Sanitized Data - Name: sdasda, Score: 3
+Score saved successfully!
+Raw Input: {"name":"sdsad","score":2}
+Received Data: {"name":"sdsad","score":2}
+Sanitized Data - Name: sdsad, Score: 2
+Score saved successfully!
+Raw Input: {"name":"dasdadadwadd","score":1}
+Received Data: {"name":"dasdadadwadd","score":1}
+Sanitized Data - Name: dasdadadwadd, Score: 1
+Score saved successfully!
+Raw Input: {"name":"sdsdadwdad","score":4}
+Received Data: {"name":"sdsdadwdad","score":4}
+Sanitized Data - Name: sdsdadwdad, Score: 4
+Score saved successfully!
+Raw Input: {"name":"kokok","score":4}
+Received Data: {"name":"kokok","score":4}
+Sanitized Data - Name: kokok, Score: 4
+Score saved successfully!
+Raw Input: {"name":"kaka","score":7}
+Received Data: {"name":"kaka","score":7}
+Sanitized Data - Name: kaka, Score: 7
+Score saved successfully!
