@@ -1,23 +1,31 @@
 let canvas = document.getElementById("gameCanvas");
 let ctx = canvas.getContext("2d");
 
+// Load assets
 let birdImg = new Image();
 birdImg.src = "assets/bird1.jpg";
 
+let flySound = new Audio("assets/fly.mp3");
+let pointSound = new Audio("assets/point.mp3");
+let deathSound = new Audio("assets/dy.mp3");
+
+// Bird object
 let bird = {
   x: 50,
   y: 150,
   width: 40,
   height: 40,
-  gravity: 1.5,
+  gravity: 0.7,
   lift: -10,
   velocity: 0,
 };
+
 let pipes = [];
 let score = 0;
 let gameLoop;
 let playerName = "";
 
+// Start game button
 document.getElementById("start-btn").addEventListener("click", startGame);
 
 function startGame() {
@@ -26,6 +34,7 @@ function startGame() {
   if (!playerName) return alert("Enter valid name");
 
   birdImg.src = "assets/" + document.getElementById("bird-select").value;
+
   document.getElementById("start-screen").style.display = "none";
   document.getElementById("game-container").style.display = "block";
 
@@ -34,10 +43,14 @@ function startGame() {
   pipes = [];
   score = 0;
 
-  pipes.push({ x: canvas.width, height: Math.random() * 250 + 100 });
+  pipes.push({ x: canvas.width, height: Math.random() * 200 + 80 });
 
   gameLoop = setInterval(updateGame, 20);
-  window.addEventListener("keydown", () => (bird.velocity = bird.lift));
+  window.addEventListener("keydown", () => {
+    bird.velocity = bird.lift;
+    flySound.currentTime = 0;
+    flySound.play();
+  });
 }
 
 function updateGame() {
@@ -56,23 +69,20 @@ function updateGame() {
     let p = pipes[i];
     p.x -= 4;
 
+    const gapHeight = 150;
     ctx.fillStyle = "#28a745";
-    ctx.fillRect(p.x, 0, 50, p.height);
-
-    let gapHeight = 150;
-    ctx.fillRect(
-      p.x,
-      p.height + gapHeight,
-      50,
-      canvas.height - p.height - gapHeight
-    );
+    ctx.fillRect(p.x, 0, 50, p.height); // Top pipe
+    ctx.fillRect(p.x, p.height + gapHeight, 50, canvas.height - p.height - gapHeight); // Bottom pipe
 
     if (p.x + 50 < 0) {
       pipes.splice(i, 1);
       i--;
       score++;
+      pointSound.currentTime = 0;
+      pointSound.play();
     }
 
+    // Collision
     if (
       bird.x < p.x + 50 &&
       bird.x + bird.width > p.x &&
@@ -82,8 +92,9 @@ function updateGame() {
     }
   }
 
+  // Add new pipe
   if (pipes[pipes.length - 1].x < 300) {
-    let newPipeHeight = Math.random() * 250 + 100;
+    let newPipeHeight = Math.random() * 200 + 80; // avoids low openings
     pipes.push({ x: canvas.width, height: newPipeHeight });
   }
 
@@ -94,11 +105,13 @@ function updateGame() {
 
 function endGame() {
   clearInterval(gameLoop);
+  deathSound.currentTime = 0;
+  deathSound.play();
+
   document.getElementById("game-container").style.display = "none";
   document.getElementById("game-over").style.display = "block";
-  document.getElementById(
-    "final-score"
-  ).innerText = `${playerName}, your score: ${score}`;
+  document.getElementById("final-score").innerText = `${playerName}, your score: ${score}`;
+  document.getElementById("save-btn").style.display = "inline-block";
 }
 
 function restartGame() {
@@ -130,14 +143,4 @@ function saveScore() {
       console.error("Error:", error);
       alert("Error saving score: " + error.message);
     });
-}
-
-function endGame() {
-  clearInterval(gameLoop);
-  document.getElementById("game-container").style.display = "none";
-  document.getElementById("game-over").style.display = "block";
-  document.getElementById(
-    "final-score"
-  ).innerText = `${playerName}, your score: ${score}`;
-  document.getElementById("save-btn").style.display = "inline-block";
 }
